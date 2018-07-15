@@ -135,8 +135,8 @@ El programa se debe llamar **redir.c**.
 ## Ejercicio 7
 ## shell scripting
 
-Escribe un script de shell llamado ccall.sh para Linux que haga lo mismo que el programa anterior. Sólo hay dos diferencias respecto al enunciado anterior: la forma de procesar los argumentos y que no se debe imprimir si el fichero ha compilado o no.\
-Las opciones de compilación (si las hay) se especifican en un argumento del script, no mediante la variable de entorno CFLAGS. Para proporcionar opciones de compilación, el usuario usará el flag -c seguido de un único argumento con las opciones que desee para compilar.  El directorio con los ficheros fuente se especifica con el flag -d seguido de la ruta. La expresión regular para filtrar la salida de errores de gcc es un argumento opcional y no utiliza flags. No se puede suponer un orden en los argumentos salvo la expresión regular, que se puede suponer que va al final, y no es obligatorio usar ningún flag. Los flags pueden aparecer, como mucho, una vez.\
+Escribe un script de shell llamado **ccall.sh** para Linux que haga lo mismo que el programa anterior. Sólo hay dos diferencias respecto al enunciado anterior: la forma de procesar los argumentos y que **no se debe imprimir si el fichero ha compilado o no**.\
+Las opciones de compilación (si las hay) se especifican en un argumento del script, no mediante la variable de entorno CFLAGS. Para proporcionar opciones de compilación, el usuario usará el flag -c seguido de **un único** argumento con las opciones que desee para compilar.  El directorio con los ficheros fuente se especifica con el flag -d seguido de la ruta. La expresión regular para filtrar la salida de errores de gcc es un argumento opcional y no utiliza flags. No se puede suponer un orden en los argumentos salvo la expresión regular, que se puede suponer que va al final, y no es obligatorio usar ningún flag. Los flags pueden aparecer, como mucho, una vez.\
 Si se usa mal el script, este debe escribir un mensaje informativo de su uso en la salida de error y terminar con un estatus adecuado.
 
 Por ejemplo, esta podría ser una ejecución del script:
@@ -161,3 +161,42 @@ Para lo mismo, pero sin filtrar nada:
 **$> ccall.sh**\
 **fich1.c:17:7: error: default argument for parameter of type int has type void**\
 **fich1.c:23:6: error: 'i' undeclared (first use in this function)**
+
+## Ejercicio 8
+## makemarks 
+
+Implementa un script de shell que cree un fichero tabulado de notas a partir de otros ficheros que contienen
+notas individuales para distintintos ejercicios.\
+El script debe escribir un fichero llamado **notasfinales.txt** con el siguiente formato, con la nota final del curso, que es la media de todos los ejercicios. Si hay algún ejercicio sin entregar, la nota tiene que ser NP:
+
+#Nombre        Ejer1    Ejer2    Ejer3    Ejer4    Final
+
+Enrique        1        2        0        3         1.50
+
+Gorka          -        2        0        2         NP
+
+Miguel         4        2        4        2         3.00
+
+Paco           8        8        8        8         8.00
+
+Pedro          5        3        7        9         6.00
+
+
+
+El fichero tiene una línea por alumno y un campo por ejercicio, tras un campo inicial con el nombre del alumno y terminando en un campo creado para poner en el la nota final.\
+Para ello se parte de cuatro ficheros que se deben pasar como argumento al script. Cada fichero contiene la nota de un ejercicio realizado. Tienen el siguiente formato:
+
+#Nombre        Ejer1
+
+Miguel         4
+
+Enrique        1
+
+Paco           8
+
+Pedro          5
+
+
+
+Si un alumno no está en alguno de los ficheros de notas, su nota en ese ejercicio tiene que aparecer con un símbolo  - y su nota final debe ser NP.\
+Los alumnos pueden aparecer en cualquier orden en los ficheros de  notas, **pero deben aparecer ordenados en orden alfabético en el fichero de salida**. 

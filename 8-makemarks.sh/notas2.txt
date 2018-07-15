@@ -1,0 +1,7 @@
+#Nombre Ej2
+
+Gorka	2
+Paco	8
+Enrique	2
+Pedro	3
+Miguel	2

@@ -1,0 +1,7 @@
+#Nombre		Ejer1	Ejer2	Ejer3	Ejer4	Final
+
+Enrique		1		2		0		3		1.50
+Gorka		-		2		0		2		NP
+Miguel		4		2		4		2		3.00
+Paco		8		8		8		8		8.00
+Pedro		5		3		7		9		6.00
