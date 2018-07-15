@@ -133,7 +133,7 @@ Para filtrar la palabra debe usar *grep* y no se permite usar ficheros intermedi
 El programa se debe llamar **redir.c**.
 
 ## Ejercicio 7
-## shell scripting
+### shell scripting
 
 Escribe un script de shell llamado **ccall.sh** para Linux que haga lo mismo que el programa anterior. Sólo hay dos diferencias respecto al enunciado anterior: la forma de procesar los argumentos y que **no se debe imprimir si el fichero ha compilado o no**.\
 Las opciones de compilación (si las hay) se especifican en un argumento del script, no mediante la variable de entorno CFLAGS. Para proporcionar opciones de compilación, el usuario usará el flag -c seguido de **un único** argumento con las opciones que desee para compilar.  El directorio con los ficheros fuente se especifica con el flag -d seguido de la ruta. La expresión regular para filtrar la salida de errores de gcc es un argumento opcional y no utiliza flags. No se puede suponer un orden en los argumentos salvo la expresión regular, que se puede suponer que va al final, y no es obligatorio usar ningún flag. Los flags pueden aparecer, como mucho, una vez.\
@@ -163,7 +163,7 @@ Para lo mismo, pero sin filtrar nada:
 **fich1.c:23:6: error: 'i' undeclared (first use in this function)**
 
 ## Ejercicio 8
-## makemarks 
+### makemarks 
 
 Implementa un script de shell que cree un fichero tabulado de notas a partir de otros ficheros que contienen
 notas individuales para distintintos ejercicios.\
@@ -200,3 +200,29 @@ Pedro          5
 
 Si un alumno no está en alguno de los ficheros de notas, su nota en ese ejercicio tiene que aparecer con un símbolo  - y su nota final debe ser NP.\
 Los alumnos pueden aparecer en cualquier orden en los ficheros de  notas, **pero deben aparecer ordenados en orden alfabético en el fichero de salida**. 
+
+## Ejercicio 9
+## cfiles
+Escribe un programa en C para Linux llamado cfiles.c que actualice un fichero compartido llamado $HOME/cfiles.cnt, que es un fichero de texto que contiene una única línea con un número entero. Si el fichero no existe al ejecutar el programa, se debe crear el fichero (y considerar que el contador era cero).\
+El programa tiene que incrementar el número del fichero sumando el número de ficheros que contienen la palabra indicada como  primer argumento. Los ficheros donde se tiene que buscar se especifican en los argumentos posteriores.\
+El programa debe buscar en cada fichero en paralelo. Además, se debe poder ejecutar el programa múltiples veces de forma simultánea.\
+El programa no puede ejecutar programas externos y puede leer los ficheros línea a línea.
+
+Por ejemplo:
+
+**$> cat $HOME/cfiles.cnt**\
+**12**\
+**$> cat f1**\
+**hola**\
+**$> cat /tmp/f2**\
+**que tal pepe**\
+**muy bien**\
+**$> cat ../f3**\
+**me llamo pepe**\
+**muy bien**\
+**adios pepe**\
+**.**\
+**$> cfiles pepe f1 /tmp/f2 ../f3**\
+**$> cat $HOME/cfiles.cnt**\
+**14**\
+**$>**
