@@ -89,3 +89,38 @@ Ejemplo:
 **dr-x--x--x  3 paurea  paurea  102 Oct  9 11:36 c**\
 **--wx-wx-wx  1 paurea  paurea    5 Oct  9 11:38 e.txt**\
 **--wx-wx-wx  1 paurea  paurea    0 Oct  9 11:37 r.bla**
+
+## Ejercicio 5
+### ccall
+
+Escribe un programa en C llamado ccall.c que, dado un directorio indicado como argumento, o utilizando el directorio actual si no hay argumentos, compile y enlace los ficheros cuyo nombre termine en ".c" empleando el compilador de C.\
+El programa ha de hacer que los ejecutables resultantes de la compilación tengan como nombre el mismo del fichero fuente, pero sin el ".c" del mismo.\
+Se desea que se compilen simultáneamente todos los ficheros encontrados, de tal forma que tengamos los compiladores ejecutando a la vez si es posible.\
+El programa debe escribir una línea para cada compilación que termine, indicando si se ha conseguido compilar o no y el nombre el fichero que se ha compilado.\
+Si la variable de entorno "CFLAGS" está definida, debe usarse dicha variable como opción para el compilador (y puede suponerse que el valor de la variable no contiene blancos.
+
+Por ejemplo, dado un directorio /tmp/testdir, con ficheros "fich1.c", "fichxx", y "fich2.c", podríamos tener la siguiente sesión.\
+En esta sesión y en el resto de ejemplos omitimos las líneas que ha escrito el compilador de C al invocarlo, por claridad.
+
+**unix$ ccall /tmp/testdir**\
+**fich1.c: no compila**\
+**fich2.c: compila**\
+**unix$**
+
+Otro ejemplo...
+
+**unix$ export CFLAGS=-Wall**\
+**unix$ cd /tmp/testdir**\
+**unix$ ccall**\
+**fich1.c: no compila**\
+**fich2.c: compila**
+
+En el primer ejemplo, se ha ejecutado
+
+**gcc -o fich1 fich1.c**\
+**gcc -o fich2 fich2.c**
+
+desde el programa. En el segundo, se ha ejecutado
+
+**gcc -Wall -o fich1 fich1.c**\
+**gcc -Wall -o fich2 fich2.c**
