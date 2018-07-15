@@ -1,0 +1,10 @@
+Modifica tu práctica del shell para que escriba por la salida de errores después de cada línea de comandos ejecutada dos números: cuántos procesos se han creado hasta ahora y cuántos pipes se han creado hasta ahora. Por ejemplo:
+
+
+ls | wc -l | grep -q patata
+3 procesos creados, 2 pipes
+ls > /dev/null
+4 procesos creados, 2 pipes
+ls -d / | wc -l
+1
+6 procesos creados, 3 pipes
