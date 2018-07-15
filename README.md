@@ -8,7 +8,7 @@ gcc -o nombre_programa -Wall -Wshadow -g nombre_programa.c
 ## Ejercicio 1
 ### Programa básico C
 
-Escribe un programa llamado reverse.c en C para Linux que escriba todos sus argumentos dados la vuelta en la salida, cada uno en una línea.
+Escribe un programa llamado **reverse.c** en C para Linux que escriba todos sus argumentos dados la vuelta en la salida, cada uno en una línea.
 
 Por ejemplo:
 
@@ -35,7 +35,7 @@ La función recibe como argumento el buffer donde se almacenará la string y su 
 ## Ejercicio 3
 ### dumptree
 
-Escribe un programa llamado dumptree.c en C para Linux que, a partir de un directorio, liste todos los ficheros y directorios recursivamente. Además, para los ficheros convencionales, el programa debe escribir todo su contenido.\
+Escribe un programa llamado **dumptree.c** en C para Linux que, a partir de un directorio, liste todos los ficheros y directorios recursivamente. Además, para los ficheros convencionales, el programa debe escribir todo su contenido.\
 Debe admitir como mucho un argumento con el path del directorio que se quiere listar. Si no se proporciona un argumento, el programa listará el directorio actual.\
 El orden de los directorios y ficheros en el listado no importa (pero tienen que aparecer todos).
 
@@ -57,8 +57,8 @@ Por ejemplo:
 ## Ejercicio 4
 ### cprec
 
-Escribe un programa cprec.c que, dados dos números en octal (permisos para directorios y permisos para ficheros), un path origen y un path destino, realice una copia recursiva de un fichero o directorio, dejando los ficheros y los directorios de la copia con los permisos que describen los números en octal.\
-El path del destino no debe existir y será el path del nuevo fichero o directorio. El programa debe funcionar para cualquier origen y destino, no se puede utilizar rename ni enlaces de ningún tipo.\
+Escribe un programa **cprec.c** que, dados dos números en octal (permisos para directorios y permisos para ficheros), un path origen y un path destino, realice una copia recursiva de un fichero o directorio, dejando los ficheros y los directorios de la copia con los permisos que describen los números en octal.\
+El path del destino no debe existir y será el path del nuevo fichero o directorio. El programa debe funcionar para cualquier origen y destino, no se puede utilizar **rename** ni enlaces de ningún tipo.\
 No está permitido utilizar programas externos y la copia debe realizarse sin utilizar las funciones de stdio.h.
 
 Ejemplo:
@@ -93,7 +93,7 @@ Ejemplo:
 ## Ejercicio 5
 ### ccall
 
-Escribe un programa en C llamado ccall.c que, dado un directorio indicado como argumento, o utilizando el directorio actual si no hay argumentos, compile y enlace los ficheros cuyo nombre termine en ".c" empleando el compilador de C.\
+Escribe un programa en C llamado **ccall.c** que, dado un directorio indicado como argumento, o utilizando el directorio actual si no hay argumentos, compile y enlace los ficheros cuyo nombre termine en ".c" empleando el compilador de C.\
 El programa ha de hacer que los ejecutables resultantes de la compilación tengan como nombre el mismo del fichero fuente, pero sin el ".c" del mismo.\
 Se desea que se compilen simultáneamente todos los ficheros encontrados, de tal forma que tengamos los compiladores ejecutando a la vez si es posible.\
 El programa debe escribir una línea para cada compilación que termine, indicando si se ha conseguido compilar o no y el nombre el fichero que se ha compilado.\
@@ -128,8 +128,36 @@ desde el programa. En el segundo, se ha ejecutado
 ## Ejercicio 6
 ### redirección
 
-Reescribe el ejercicio anterior para que reciba un argumento adicional que sea una palabra. Cuando se pasan dos argumentos, el primero será el directorio y el segundo la palabra. En esta versión del programa, se deben escribir **únicamente las líneas de error** del compilador que contengan dicha palabra.
+Reescribe el ejercicio anterior para que reciba un argumento adicional que sea una palabra. Cuando se pasan dos argumentos, el primero será el directorio y el segundo la palabra. En esta versión del programa, se deben escribir **únicamente las líneas de error** del compilador que contengan dicha palabra.\
+Para filtrar la palabra debe usar *grep* y no se permite usar ficheros intermedios ni se permite ejecutar un shell (p. ej. usando *system*).\
+El programa se debe llamar **redir.c**.
 
-Para filtrar la palabra debe usar *grep* y no se permite usar ficheros intermedios ni se permite ejecutar un shell (p. ej. usando *system*).
+## Ejercicio 7
+## shell scripting
 
-El programa se debe llamar **redir.c**. 
+Escribe un script de shell llamado ccall.sh para Linux que haga lo mismo que el programa anterior. Sólo hay dos diferencias respecto al enunciado anterior: la forma de procesar los argumentos y que no se debe imprimir si el fichero ha compilado o no.\
+Las opciones de compilación (si las hay) se especifican en un argumento del script, no mediante la variable de entorno CFLAGS. Para proporcionar opciones de compilación, el usuario usará el flag -c seguido de un único argumento con las opciones que desee para compilar.  El directorio con los ficheros fuente se especifica con el flag -d seguido de la ruta. La expresión regular para filtrar la salida de errores de gcc es un argumento opcional y no utiliza flags. No se puede suponer un orden en los argumentos salvo la expresión regular, que se puede suponer que va al final, y no es obligatorio usar ningún flag. Los flags pueden aparecer, como mucho, una vez.\
+Si se usa mal el script, este debe escribir un mensaje informativo de su uso en la salida de error y terminar con un estatus adecuado.
+
+Por ejemplo, esta podría ser una ejecución del script:
+
+**$> ccall.sh -c "-Wall -Wshadow" -d /tmp/testdir undeclared**\
+**fich1.c:23:6: error: 'i' undeclared (first use in this function)**
+
+Que sería exactamente igual que ejecutar:
+
+**$> ccall.sh -d /tmp/testdir -c "-Wall -Wshadow" undeclared**\
+**fich1.c:23:6: error: 'i' undeclared (first use in this function)**
+
+Para compilar los ficheros fuente del directorio actual sin opciones de compilación y filtrando la salida:
+
+**$> cd /tmp/testdir**\
+**$> ccall.sh undeclared**\
+**fich1.c:23:6: error: 'i' undeclared (first use in this function)**
+
+Para lo mismo, pero sin filtrar nada:
+
+**$> cd /tmp/testdir**\
+**$> ccall.sh**\
+**fich1.c:17:7: error: default argument for parameter of type int has type void**\
+**fich1.c:23:6: error: 'i' undeclared (first use in this function)**
