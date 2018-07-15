@@ -32,3 +32,24 @@ El programa debe implementar una función con la siguiente cabecera:\
 **int makepath(char *buf, int len);**\
 La función recibe como argumento el buffer donde se almacenará la string y su tamaño, y retorna el tamaño de la string creada (sin contar el carácter terminador). En caso de error, debe retornar un valor negativo.
 
+## Ejercicio 3
+### Dumptree
+
+Escribe un programa llamado dumptree.c en C para Linux que, a partir de un directorio, liste todos los ficheros y directorios recursivamente. Además, para los ficheros convencionales, el programa debe escribir todo su contenido.\
+Debe admitir como mucho un argumento con el path del directorio que se quiere listar. Si no se proporciona un argumento, el programa listará el directorio actual.\
+El orden de los directorios y ficheros en el listado no importa (pero tienen que aparecer todos).
+
+Por ejemplo:
+
+**$> mkdir -p /tmp/a/b/c /tmp/a/d**\
+**$> echo HOLA PEPE> /tmp/a/b/x.txt**\
+**$> echo ADIOS PEPE > /tmp/a/b/c/y.txt**\
+**$> ./dumptree /tmp/a**\
+**/tmp/a**\
+**/tmp/a/b**\
+**/tmp/a/b/c**\
+**/tmp/a/b/c/y.txt**\
+**ADIOS PEPE**\
+**/tmp/a/b/x.txt**\
+**HOLA PEPE**\
+**/tmp/a/d**\
