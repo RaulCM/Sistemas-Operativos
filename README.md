@@ -124,3 +124,12 @@ desde el programa. En el segundo, se ha ejecutado
 
 **gcc -Wall -o fich1 fich1.c**\
 **gcc -Wall -o fich2 fich2.c**
+
+## Ejercicio 6
+### redirección
+
+Reescribe el ejercicio anterior para que reciba un argumento adicional que sea una palabra. Cuando se pasan dos argumentos, el primero será el directorio y el segundo la palabra. En esta versión del programa, se deben escribir **únicamente las líneas de error** del compilador que contengan dicha palabra.
+
+Para filtrar la palabra debe usar *grep* y no se permite usar ficheros intermedios ni se permite ejecutar un shell (p. ej. usando *system*).
+
+El programa se debe llamar **redir.c**. 
