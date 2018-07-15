@@ -14,8 +14,8 @@ Por ejemplo:
 
 **$> ./reverse uno dos tres cuatro**\
 **onu**\
-**sod**
-**sert**
-**ortauc**
+**sod**\
+**sert**\
+**ortauc**\
 **$>**
 
