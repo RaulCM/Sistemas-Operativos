@@ -337,3 +337,16 @@ Deberá ser equivalente a
 cuando el directorio /tmp existe, y no deberá ejecutar el ls en caso contrario. Si  ifok no ejecuta el comando, la variable RESULT contendrá un 0 (status de éxito).\
 El comando ifnot deberá ejecutar sus argumentos como un comando simple si el comando anterior terminó su ejecución de modo incorrecto.\
 Los comandos true y false deben ser análogos a los comandos UNIX con ese mismo nombre.
+
+## Modificación Práctica Final
+### Shell
+
+Modifica tu práctica del shell para que escriba por la salida de errores después de cada línea de comandos ejecutada dos números: cuántos procesos se han creado hasta ahora y cuántos pipes se han creado hasta ahora. Por ejemplo:
+
+**ls | wc -l | grep -q patata**\
+**3 procesos creados, 2 pipes**\
+**ls > /dev/null**\
+**4 procesos creados, 2 pipes**\
+**ls -d / | wc -l**\
+**1**\
+**6 procesos creados, 3 pipes**
