@@ -13,9 +13,14 @@ Escribe un programa llamado reverse.c en C para Linux que escriba todos sus argu
 Por ejemplo:
 
 **$> ./reverse uno dos tres cuatro**
+
 **onu**
+
 **sod**
+
 **sert**
+
 **ortauc**
-**$> **
+
+**$>**
 
